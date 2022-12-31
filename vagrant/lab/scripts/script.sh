@@ -14,6 +14,9 @@ systemctl restart sshd.service
 sudo echo "vagrant:vagrant" | sudo chpasswd
 sudo echo "root:123456" | sudo chpasswd
 sudo usermod -aG sudo vagrant
+echo '=============================='
+echo 'Configurações SSH'
+echo '=============================='
 sudo cp /vagrant/ssh/* /root/.ssh/
 sudo cp /vagrant/ssh/* /home/vagrant/.ssh/
 }
@@ -21,7 +24,14 @@ sudo cp /vagrant/ssh/* /home/vagrant/.ssh/
 
 install_docker()
 {
+echo '=============================='
+echo 'Instalação Docker'
+echo '=============================='
 curl https://releases.rancher.com/install-docker/20.10.sh | sh
+
+echo '=============================='
+echo 'Configuração do Docker'
+echo '=============================='
 sudo usermod -aG docker vagrant
 sudo chmod 666 /var/run/docker.sock
 }
